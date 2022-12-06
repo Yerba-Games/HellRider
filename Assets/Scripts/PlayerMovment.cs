@@ -6,9 +6,8 @@ using NaughtyAttributes;
 public class PlayerMovment : MonoBehaviour
 {
     Actions input;
-    [SerializeField] [Foldout("Settings")] float Speed, Jump;
+    [SerializeField] [Foldout("Settings")] float Speed, Jump, health=100f;
     [SerializeField] [Foldout("Settings")] Camera playerCamera;
-    private float inputX, inputZ;
     private Rigidbody rb;
     private InputAction move;
     private Vector3 forceDirection = Vector3.zero;
@@ -21,7 +20,7 @@ public class PlayerMovment : MonoBehaviour
     private void OnDisable()
     {
         input.Player.Jump.started -= DoJump;
-        input.Player.Move.Disable();
+        input.Player.Disable();
     }
 
     private void Awake()
@@ -91,6 +90,18 @@ public class PlayerMovment : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+    public void HitPlayer(float damage)
+    {
+        health -= damage;
+        death();
+    }
+    void death()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
