@@ -44,7 +44,7 @@ public class PlayerMovment : MonoBehaviour
         Vector3 horizontalVelocity = rb.velocity;
         horizontalVelocity.y = 0;
         if (horizontalVelocity.sqrMagnitude > Speed * Speed)
-            rb.velocity = horizontalVelocity.normalized * Speed + Vector3.up * rb.velocity.y;
+            rb.velocity = new Vector3(Mathf.Clamp(horizontalVelocity.x, 0, 1), 0, Mathf.Clamp(horizontalVelocity.z, 0, 1)) * Speed + Vector3.up * rb.velocity.y;
         LookAt();
     }
     private void DoJump(InputAction.CallbackContext obj)
