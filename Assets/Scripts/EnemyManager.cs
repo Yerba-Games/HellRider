@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using NaughtyAttributes;
-
 public class EnemyManager : MonoBehaviour
 {
 
-    [ShowNonSerializedField] GameObject Player;
+    [SerializeField] GameObject Player;
     [SerializeField] float damage = 20f;
     public float health = 100f;
     NavMeshAgent AI;
+    public EnemyCounter enemyCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +32,7 @@ public class EnemyManager : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            enemyCounter.enemisLeft --;
         }
     }
     private void OnCollisionEnter(Collision collision)

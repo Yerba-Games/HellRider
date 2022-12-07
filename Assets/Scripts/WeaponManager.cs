@@ -7,7 +7,7 @@ public class WeaponManager : MonoBehaviour
 {
     Actions input;
     [SerializeField]private GameObject Cam;
-    [SerializeField] float range = 100f,damage=20f;
+    [SerializeField] float range = 100f,damage=20f,debugRange=5;
     #region InputActions
     private void OnEnable()
     {
@@ -38,6 +38,7 @@ public class WeaponManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Cam.transform.position, transform.forward, out hit, range))
         {
+            Debug.DrawRay(Cam.transform.position, transform.forward*debugRange,Color.red,5);
             EnemyManager enemyManager = hit.transform.GetComponent<EnemyManager>();
             if (enemyManager!=null)
             {
