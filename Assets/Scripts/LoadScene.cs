@@ -8,16 +8,8 @@ public class LoadScene : MonoBehaviour
     [SerializeField] string sceneName;
     public void changeScene(string name)
     {
-        if (name != null)
-        {
-            SceneManager.LoadScene(name);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            changeScene(sceneName);
-        }
+
+            SceneManager.LoadScene("SampleScene");
+
     }
 }
