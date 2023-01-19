@@ -6,7 +6,7 @@ public class PauseManager : MonoBehaviour
 {
     Actions actions;
     public static bool GameIsPaused = false;
-    [SerializeField] GameObject pausemenuUI;
+    [SerializeField] GameObject pausemenuUI, crossKurawaHair;
     private void Awake()
     {
         pausemenuUI.SetActive(false);
@@ -42,12 +42,14 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         pausemenuUI.SetActive(false);
+        crossKurawaHair.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
     void Pause()
     {
         pausemenuUI.SetActive(true);
+        crossKurawaHair.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
