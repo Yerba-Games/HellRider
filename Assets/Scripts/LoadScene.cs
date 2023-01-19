@@ -9,7 +9,8 @@ public class LoadScene : MonoBehaviour
     public void changeScene(string name)
     {
 
-            SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
 
     }
 }

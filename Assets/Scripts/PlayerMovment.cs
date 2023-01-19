@@ -106,6 +106,7 @@ public class PlayerMovment : MonoBehaviour
         if (health <= 0)
         {
             gameObject.SetActive(false);
+            Time.timeScale = 0;
             Gameover.SetActive(true);
             Time.timeScale = 0f;
         }
