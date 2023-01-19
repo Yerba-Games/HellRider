@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] GameObject tempAudioPrefab;
     [SerializeField] AudioField audioShoot;
     [SerializeField] AudioField audioKill;
+    [SerializeField] AudioField audioHit;
     [SerializeField] AudioField audioDamage;
     [SerializeField] AudioField audioMusic;
 
@@ -31,46 +32,44 @@ public class AudioManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SpawnEarthButton.Clicked += PlayButtonKickoff;
-        Star.Collected += PlayCollectedStar;
-        KopernikMgr.KickedEarth += PlayEarthKicked;
-        Planet.LevelCompleted += PlayLevelCompleted;
-        Planet.Exploded += PlayEarthExplosion;
-        Draggable.PickedUp += PlayPickedUp;
-        Draggable.Dropped += PlayDropped;
-        UFO.UfoIn += PlayUfoIn;
-        UFO.UfoOut += PlayUfoOut;
+        += PlayKIll;
+        += PlayHit;
+        += PlayDamage;
+        += PlayShoot;
+        += PlayMusic;
     }
 
     private void OnDisable()
     {
-        SpawnEarthButton.Clicked -= PlayButtonKickoff;
-        Star.Collected -= PlayCollectedStar;
-        KopernikMgr.KickedEarth -= PlayEarthKicked;
-        Planet.LevelCompleted -= PlayLevelCompleted;
-        Planet.Exploded -= PlayEarthExplosion;
-        Draggable.PickedUp -= PlayPickedUp;
-        Draggable.Dropped -= PlayDropped;
-        UFO.UfoIn -= PlayUfoIn;
-        UFO.UfoOut -= PlayUfoOut;
+        += PlayKIll;
+        += PlayHit;
+        += PlayDamage;
+        += PlayShoot;
+        += PlayMusic;
+
     }
 
-    private void PlayButtonKickoff()
+    private void PlayShoot()
     {
         PlayAudioEffect(audioShoot);
     }
 
-    private void PlayCollectedStar()
+    private void PlayKill()
     {
         PlayAudioEffect(audioKill);
     }
 
-    private void PlayEarthKicked()
+    private void PlayDamage()
     {
         PlayAudioEffect(audioDamage);
     }
 
-    private void PlayEarthKicked()
+    private void PlayHit()
+    {
+        PlayAudioEffect(audioHit);
+    }
+
+    private void PlayMusic()
     {
         PlayAudioEffect(audioMusic);
     }
